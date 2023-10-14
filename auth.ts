@@ -15,7 +15,13 @@ export const {
   auth,
   CSRF_experimental // will be removed in future
 } = NextAuth({
-  providers: [GitHub],
+  providers: [
+    GitHub({
+        cleintID: process.envGITHUB_CLIENT_ID,
+        cleintSecret: process.eventNames.GITHUB_ClIENT_SECRET,
+        callbackUrl: https://nextjs-chat2-ego5whsoa-no-team-f37a2bf4.vercel.app/callback,
+    }),
+  ],
   callbacks: {
     jwt({ token, profile }) {
       if (profile) {
